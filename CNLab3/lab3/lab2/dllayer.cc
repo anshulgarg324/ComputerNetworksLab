@@ -57,7 +57,7 @@ void Dllayer::handleMessage(cMessage *msg)
                     updateDisplay();
       scheduleAt(simTime()+timeout, timeoutEvent);
       start++;
-    }if(msg==delayrec)
+    }else if(msg==delayrec)
     {
         char msgname[20];
       Ack *ack= new Ack();
@@ -147,6 +147,14 @@ void Dllayer::handleMessage(cMessage *msg)
                if(copydpdu!=NULL && dpdu->getId()==copydpdu->getId() )
                {
                   delete(dpdu->decapsulate());
+                  numSent++;
+                    if (ev.isGUI())
+                                updateDisplay();
+                    cancelEvent(delayrec);
+                    if(uniform(0,1)<0.40)
+                          scheduleAt(simTime()+2.0,delayrec);
+                      else
+                          scheduleAt(simTime()+1.0,delayrec);
                }
                else
                {
@@ -156,6 +164,7 @@ void Dllayer::handleMessage(cMessage *msg)
                   numSent++;
                   if (ev.isGUI())
                               updateDisplay();
+                  cancelEvent(delayrec);
                   if(uniform(0,1)<0.40)
                         scheduleAt(simTime()+2.0,delayrec);
                     else
