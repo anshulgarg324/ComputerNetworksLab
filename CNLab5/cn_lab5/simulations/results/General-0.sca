@@ -1,0 +1,82 @@
+version 2
+run General-0-20160307-05:44:10-21233
+attr configname General
+attr datetime 20160307-05:44:10
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvars2 $repetition=0
+attr measurement ""
+attr network cn_lab5.LayerNetworkGNB
+attr processid 21233
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+
+scalar LayerNetworkGNB.n1.dl 	#sent 	144
+scalar LayerNetworkGNB.n1.dl 	#received 	49
+statistic LayerNetworkGNB.n1.dl 	"RTT of packets"
+field count 23
+field mean 0
+field stddev 0
+field sum 0
+field sqrsum 0
+field min 0
+field max 0
+attr type  int
+bin	-INF	0
+bin	0	23
+bin	1	0
+scalar LayerNetworkGNB.n2.dl 	#sent 	49
+scalar LayerNetworkGNB.n2.dl 	#received 	141
+statistic LayerNetworkGNB.n2.dl 	"Delay of packets"
+field count 23
+field mean 23
+field stddev 13.564659966251
+field sum 529
+field sqrsum 16215
+field min 1
+field max 45
+attr type  int
+bin	-INF	0
+bin	0	0
+bin	1	1
+bin	2	0
+bin	3	1
+bin	4	0
+bin	5	1
+bin	6	0
+bin	7	1
+bin	8	0
+bin	9	1
+bin	10	0
+bin	11	1
+bin	12	0
+bin	13	1
+bin	14	0
+bin	15	1
+bin	16	0
+bin	17	1
+bin	18	0
+bin	19	1
+bin	20	0
+bin	21	1
+bin	22	0
+bin	23	1
+bin	24	0
+bin	25	1
+bin	26	0
+bin	27	1
+bin	28	0
+bin	29	1
+bin	30	0
+bin	31	1
+bin	32	0
+bin	33	1
+bin	34	0
+bin	35	1
+bin	36	0
+bin	37	1
+bin	38	4

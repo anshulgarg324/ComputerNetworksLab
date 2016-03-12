@@ -1,0 +1,38 @@
+----------------------------------------------------------------------
+
+
+Tcl error: tkenv.cc#288: grab failed: window not viewable
+    while executing
+"grab $w"
+    (procedure "execOkCancelDialog" line 20)
+    invoked from within
+"execOkCancelDialog $w"
+    (procedure "comboSelectionDialog" line 15)
+    invoked from within
+"comboSelectionDialog "Set Up Network" "Set up a network. The network will use parameter values defined in the \n\[General\] section of the ini file." ..."
+    (procedure "newNetwork" line 27)
+    invoked from within
+"newNetwork"
+    (procedure "startupCommands" line 30)
+    invoked from within
+"startupCommands"
+
+
+----------------------------------------------------------------------
+
+
+Tcl error: tkenv.cc#895: can't unset "pil_name(LayerNetworkGNB.n1:Node:2:2)": no such element in array
+    while executing
+"unset pil_name($key)"
+    invoked from within
+"if [info exists pil_name($key)] {
+            debug "trying to open inspector $key"
+            set ptrs [opp_findobjectbyfullpath $pil_name($key) $pi..."
+    (procedure "inspectorList:openInspectors" line 5)
+    invoked from within
+"inspectorList:openInspectors"
+    (procedure "inspectorUpdateCallback" line 6)
+    invoked from within
+"inspectorUpdateCallback"
+
+

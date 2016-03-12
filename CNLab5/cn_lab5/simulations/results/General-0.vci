@@ -1,0 +1,22 @@
+file 1305 1457309699                                            
+version 2
+run General-0-20160307-05:44:10-21233
+attr configname General
+attr datetime 20160307-05:44:10
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvars2 $repetition=0
+attr measurement ""
+attr network cn_lab5.LayerNetworkGNB
+attr processid 21233
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+
+vector 2  LayerNetworkGNB.n2.dl  "Delay Vector"  ETV
+vector 1  LayerNetworkGNB.n1.dl  "RTT of Packets vector"  ETV
+1	496 361 60 764 1.004 45.004 23 26 26 598 15548
+2	857 448 50 754 1.002 45.002 23 1.002 45.002 529.046 16217.116092
