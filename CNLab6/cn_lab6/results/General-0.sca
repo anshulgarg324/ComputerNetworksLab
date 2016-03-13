@@ -1,0 +1,140 @@
+version 2
+run General-0-20160314-01:35:40-16406
+attr configname General
+attr datetime 20160314-01:35:40
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvars2 $repetition=0
+attr measurement ""
+attr network LayerNetwork
+attr processid 16406
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+
+scalar LayerNetwork.nodeA.nw 	#sent 	10
+scalar LayerNetwork.nodeA.nw 	#received 	10
+statistic LayerNetwork.nodeA.nw 	"Delay of packets"
+field count 0
+field mean -nan
+field stddev -nan
+field sum 0
+field sqrsum 0
+field min -nan
+field max -nan
+attr type  int
+bin	-INF	0
+bin	0	0
+bin	1	0
+scalar LayerNetwork.nodeB.nw 	#sent 	0
+scalar LayerNetwork.nodeB.nw 	#received 	0
+statistic LayerNetwork.nodeB.nw 	"Delay of packets"
+field count 0
+field mean -nan
+field stddev -nan
+field sum 0
+field sqrsum 0
+field min -nan
+field max -nan
+attr type  int
+bin	-INF	0
+bin	0	0
+bin	1	0
+scalar LayerNetwork.nodeC.nw 	#sent 	10
+scalar LayerNetwork.nodeC.nw 	#received 	10
+statistic LayerNetwork.nodeC.nw 	"Delay of packets"
+field count 0
+field mean -nan
+field stddev -nan
+field sum 0
+field sqrsum 0
+field min -nan
+field max -nan
+attr type  int
+bin	-INF	0
+bin	0	0
+bin	1	0
+scalar LayerNetwork.nodeD.nw 	#sent 	0
+scalar LayerNetwork.nodeD.nw 	#received 	0
+statistic LayerNetwork.nodeD.nw 	"Delay of packets"
+field count 0
+field mean -nan
+field stddev -nan
+field sum 0
+field sqrsum 0
+field min -nan
+field max -nan
+attr type  int
+bin	-INF	0
+bin	0	0
+bin	1	0
+scalar LayerNetwork.nodeE.nw 	#sent 	10
+scalar LayerNetwork.nodeE.nw 	#received 	10
+statistic LayerNetwork.nodeE.nw 	"Delay of packets"
+field count 10
+field mean 14.4
+field stddev 9.957688263626
+field sum 144
+field sqrsum 2966
+field min 0
+field max 27
+attr type  int
+bin	-INF	0
+bin	0	1
+bin	1	0
+bin	2	1
+bin	3	0
+bin	4	0
+bin	5	1
+bin	6	0
+bin	7	0
+bin	8	1
+bin	9	0
+bin	10	0
+bin	11	0
+bin	12	0
+bin	13	0
+bin	14	0
+bin	15	1
+bin	16	0
+bin	17	0
+bin	18	1
+bin	19	0
+bin	20	0
+bin	21	1
+bin	22	0
+bin	23	1
+bin	24	0
+bin	25	1
+bin	26	0
+bin	27	1
+bin	28	0
+bin	29	0
+bin	30	0
+bin	31	0
+bin	32	0
+bin	33	0
+bin	34	0
+bin	35	0
+bin	36	0
+bin	37	0
+bin	38	0
+bin	39	0
+bin	40	0
+bin	41	0
+bin	42	0
+bin	43	0
+bin	44	0
+bin	45	0
+bin	46	0
+bin	47	0
+bin	48	0
+bin	49	0
+bin	50	0
+bin	51	0
+bin	52	0
+bin	53	0
+bin	54	0
