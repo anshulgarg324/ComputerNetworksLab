@@ -18,13 +18,14 @@ package lab2;
 module Node
 {
     parameters:
-        int nodeId;    
+        int nodeId;
+        int pktCount;    
     gates:
         input gin;
         output gout;
      submodules:
-         al : Alayer{aid=nodeId;counter=0;};
-         pl : Player;
+         al : Alayer{aid=nodeId;counter=0;pktSent=pktCount;};
+         pl : Player{pid=nodeId;};
          dl : Dllayer{did=nodeId;};
       connections:
           al.todlout-->dl.fromAin;

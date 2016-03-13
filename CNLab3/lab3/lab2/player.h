@@ -26,6 +26,8 @@ class Player : public cSimpleModule
 private:
     int numSent=0;
     int numRec=0;
+    int pid;
+    float frameLoss;
   protected:
     virtual void initialize();
     virtual void handleMessage(cMessage *msg);

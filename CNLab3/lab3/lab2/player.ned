@@ -20,6 +20,8 @@ package lab2;
 //
 simple Player
 {
+    parameters:
+        int pid;
     gates:
         input fromdlin;
         output todlout;

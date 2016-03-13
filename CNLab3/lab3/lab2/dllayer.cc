@@ -112,12 +112,12 @@ void Dllayer::handleMessage(cMessage *msg)
            DL_PDU *dpdu=check_and_cast<DL_PDU*> (msg);
            if(dpdu->getType()=='A')
            {
-               if (uniform(0,1) < 0.10)
+               /*if (uniform(0,1) < 0.10)
               {
                   EV << "\"Losing\" message.\n";
                   bubble("message lost");  // making animation more informative...
                   delete msg;
-              }else
+              }else*/
                if(copydpdu!=NULL && dpdu->getId()==copydpdu->getId())
                {
                    delete(dpdu->decapsulate());
@@ -127,7 +127,7 @@ void Dllayer::handleMessage(cMessage *msg)
                    copydpdu=dpdu->dup();
                    cancelEvent(timeoutEvent);
                  delete(dpdu->decapsulate());
-                  if(start<50)
+                  if(start<counter)
                   {
                       if(uniform(0,1)<0.30)
                           scheduleAt(simTime()+2.0,delaysen);
@@ -138,18 +138,15 @@ void Dllayer::handleMessage(cMessage *msg)
 
            }else if(dpdu->getType()=='D')
            {
-               if (uniform(0,1) < 0.15)
+              /* if (uniform(0,1) < 0.15)
               {
                   EV << "\"Losing\" message.\n";
                   bubble("message lost");  // making animation more informative...
                   delete msg;
-              }else
+              }else*/
                if(copydpdu!=NULL && dpdu->getId()==copydpdu->getId() )
                {
                   delete(dpdu->decapsulate());
-                  numSent++;
-                    if (ev.isGUI())
-                                updateDisplay();
                     cancelEvent(delayrec);
                     if(uniform(0,1)<0.40)
                           scheduleAt(simTime()+2.0,delayrec);

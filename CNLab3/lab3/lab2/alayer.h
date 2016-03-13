@@ -27,6 +27,7 @@ private:
     int counter;
     int numSent;
     int numRec;
+    int pktSent;
   protected:
     virtual void initialize();
     virtual void handleMessage(cMessage *msg);

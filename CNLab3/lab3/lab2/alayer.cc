@@ -25,6 +25,7 @@ void Alayer::initialize()
 {
     aid=par("aid");
     counter=par("counter");
+    pktSent=par("pktSent");
     counter=0;
     numSent=0;
     numRec=0;
@@ -43,7 +44,7 @@ void Alayer::handleMessage(cMessage *msg)
     if(msg->isSelfMessage())
        {
            char msgname[20];
-           for(int i=1;i<=50;i++)
+           for(int i=1;i<=pktSent;i++)
            {
                MyData *data= new MyData();
                sprintf(msgname,"-%d",i);

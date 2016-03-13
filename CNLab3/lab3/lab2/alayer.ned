@@ -23,7 +23,7 @@ simple Alayer
     parameters:
  		int aid;
  		int counter;
- 		
+ 		int pktSent;
     gates:
         input fromdlin;
         output todlout;
