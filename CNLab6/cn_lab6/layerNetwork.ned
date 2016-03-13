@@ -39,16 +39,16 @@ network LayerNetwork
             @display("p=332,268");
         }
     connections:
-        nodeA.tonodeB --> nodeB.fromnodeA;
-        nodeA.fromnodeB <-- nodeB.tonodeA;
-        nodeA.tonodeC --> nodeC.fromnodeA;
-        nodeA.fromnodeC <-- nodeC.tonodeA;
-        nodeA.tonodeD --> nodeD.fromnodeA;
-        nodeA.fromnodeD <-- nodeD.tonodeA;
-        nodeB.tonodeC --> nodeC.fromnodeB;
-        nodeB.fromnodeC <-- nodeC.tonodeB;
-        nodeB.tonodeE --> nodeE.fromnodeB;
-        nodeB.fromnodeE <-- nodeE.tonodeB;
-        nodeE.tonodeC --> nodeC.fromnodeE;
-        nodeE.fromnodeC <-- nodeC.tonodeE;       
+        nodeA.tonodeB --> {delay=5ms;} --> nodeB.fromnodeA;
+        nodeA.fromnodeB <-- {delay=5ms;} <-- nodeB.tonodeA;
+        nodeA.tonodeC --> {delay=2ms;} --> nodeC.fromnodeA;
+        nodeA.fromnodeC <-- {delay=2ms;} <-- nodeC.tonodeA;
+        nodeA.tonodeD --> {delay=3ms;} --> nodeD.fromnodeA;
+        nodeA.fromnodeD <-- {delay=3ms;} <-- nodeD.tonodeA;
+        nodeB.tonodeC --> {delay=4ms;} --> nodeC.fromnodeB;
+        nodeB.fromnodeC <-- {delay=4ms;} <-- nodeC.tonodeB;
+        nodeB.tonodeE --> {delay=3ms;} --> nodeE.fromnodeB;
+        nodeB.fromnodeE <-- {delay=3ms;} <-- nodeE.tonodeB;
+        nodeE.tonodeC --> {delay=4ms;} --> nodeC.fromnodeE;
+        nodeE.fromnodeC <-- {delay=4ms;} <-- nodeC.tonodeE;       
 }
