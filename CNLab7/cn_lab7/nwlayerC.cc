@@ -14,6 +14,7 @@
 // 
 
 #include "nwlayerC.h"
+#include "R_PDU_m.h"
 #include "A_PDU_m.h"
 #include "NW_PDU_m.h"
 Define_Module(NwlayerC);
@@ -33,13 +34,68 @@ void NwlayerC::initialize()
     todlgate[1]=gate("todlA");
     todlgate[2]=gate("todlB");
     todlgate[5]=gate("todlE");
+    gatetoId[gate("fromdlA")]=1;
+    gatetoId[gate("fromdlB")]=2;
+    gatetoId[gate("fromdlE")]=5;
     delayStats.setName("Delay of Packets");
     delayStats.setRangeAutoUpper(0,10,2.0);
     delayVector.setName("Delay Vector");
+    if(nid==3)
+    {
+        msg = new cMessage("event");
+        scheduleAt(0,msg);
+    }
 }
 
 void NwlayerC::handleMessage(cMessage *msg)
 {
+    if(msg->isSelfMessage())
+    {
+        R_PDU *rpdu = new R_PDU();
+        rpdu->setM(table);
+        NW_PDU *npdu =new NW_PDU();
+        npdu->encapsulate(rpdu);
+        npdu->setType('R');
+        for(map<int,cGate*>::iterator it=todlgate.begin();it!=todlgate.end();it++)
+        {
+            send(npdu->dup(),it->second);
+        }
+       // send(npdu->dup(),gate("todlB"));
+    }else{
+
+        NW_PDU *npdu = check_and_cast<NW_PDU*>(msg);
+        //cPacket *pkt = npdu->decapsulate();
+        R_PDU *rpdu = check_and_cast<R_PDU*>(npdu->decapsulate());
+        map<int,pair<int,int>> temp = rpdu->getM();
+        int rpduSrc=gatetoId[msg->getArrivalGate()];
+       // EV << "RPDUSRC=" << rpduSrc << endl;
+        int flag=0;
+        for(int i=1;i<=5;i++)
+        {
+            if(table[rpduSrc].first!=INT_MAX && temp[i].first!=INT_MAX)
+            {
+                if(table[i].first > (table[rpduSrc].first + temp[i].first))
+                {
+                    flag=1;
+                    table[i].first=table[rpduSrc].first + temp[i].first;
+                    table[i].second=rpduSrc;
+                }
+            }
+        }
+        delete(rpdu);
+        if(flag)
+        {
+            R_PDU *rpdu = new R_PDU();
+            rpdu->setM(table);
+            NW_PDU *npdu =new NW_PDU();
+            npdu->encapsulate(rpdu);
+            npdu->setType('R');
+            for(map<int,cGate*>::iterator it=todlgate.begin();it!=todlgate.end();it++)
+            {
+                send(npdu->dup(),it->second);
+            }
+        }
+    }
 
 }
 void NwlayerC::updateDisplay()
@@ -52,6 +108,6 @@ void NwlayerC::finish(){
     EV << "Id=" << nid << endl;
     for(map<int,pair<int,int>>::iterator it = table.begin();it!=table.end();it++)
     {
-        EV << it->first << " => " << (it->second).first << " => " << (it->second).first << endl;
+        EV << it->first << " => " << (it->second).first << " => " << (it->second).second << endl;
     }
 }

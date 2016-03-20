@@ -33,8 +33,10 @@ class NwlayerA : public cSimpleModule
     int dest;
     int numSent;
     int numRec;
+    cMessage *msg;
     map<int,pair<int,int>> table;
     map<int,cGate*> todlgate;
+    map<cGate*,int> gatetoId;
     cLongHistogram delayStats;
     cOutVector delayVector;
   protected:

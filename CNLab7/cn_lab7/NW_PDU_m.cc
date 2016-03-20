@@ -60,6 +60,7 @@ NW_PDU::NW_PDU(const char *name, int kind) : ::cPacket(name,kind)
     this->time_var = 0;
     this->srcAdd_var = 0;
     this->destAdd_var = 0;
+    this->type_var = 0;
 }
 
 NW_PDU::NW_PDU(const NW_PDU& other) : ::cPacket(other)
@@ -84,6 +85,7 @@ void NW_PDU::copy(const NW_PDU& other)
     this->time_var = other.time_var;
     this->srcAdd_var = other.srcAdd_var;
     this->destAdd_var = other.destAdd_var;
+    this->type_var = other.type_var;
 }
 
 void NW_PDU::parsimPack(cCommBuffer *b)
@@ -92,6 +94,7 @@ void NW_PDU::parsimPack(cCommBuffer *b)
     doPacking(b,this->time_var);
     doPacking(b,this->srcAdd_var);
     doPacking(b,this->destAdd_var);
+    doPacking(b,this->type_var);
 }
 
 void NW_PDU::parsimUnpack(cCommBuffer *b)
@@ -100,6 +103,7 @@ void NW_PDU::parsimUnpack(cCommBuffer *b)
     doUnpacking(b,this->time_var);
     doUnpacking(b,this->srcAdd_var);
     doUnpacking(b,this->destAdd_var);
+    doUnpacking(b,this->type_var);
 }
 
 simtime_t NW_PDU::getTime() const
@@ -130,6 +134,16 @@ int NW_PDU::getDestAdd() const
 void NW_PDU::setDestAdd(int destAdd)
 {
     this->destAdd_var = destAdd;
+}
+
+int NW_PDU::getType() const
+{
+    return type_var;
+}
+
+void NW_PDU::setType(int type)
+{
+    this->type_var = type;
 }
 
 class NW_PDUDescriptor : public cClassDescriptor
@@ -179,7 +193,7 @@ const char *NW_PDUDescriptor::getProperty(const char *propertyname) const
 int NW_PDUDescriptor::getFieldCount(void *object) const
 {
     cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 3+basedesc->getFieldCount(object) : 3;
+    return basedesc ? 4+basedesc->getFieldCount(object) : 4;
 }
 
 unsigned int NW_PDUDescriptor::getFieldTypeFlags(void *object, int field) const
@@ -194,8 +208,9 @@ unsigned int NW_PDUDescriptor::getFieldTypeFlags(void *object, int field) const
         FD_ISEDITABLE,
         FD_ISEDITABLE,
         FD_ISEDITABLE,
+        FD_ISEDITABLE,
     };
-    return (field>=0 && field<3) ? fieldTypeFlags[field] : 0;
+    return (field>=0 && field<4) ? fieldTypeFlags[field] : 0;
 }
 
 const char *NW_PDUDescriptor::getFieldName(void *object, int field) const
@@ -210,8 +225,9 @@ const char *NW_PDUDescriptor::getFieldName(void *object, int field) const
         "time",
         "srcAdd",
         "destAdd",
+        "type",
     };
-    return (field>=0 && field<3) ? fieldNames[field] : NULL;
+    return (field>=0 && field<4) ? fieldNames[field] : NULL;
 }
 
 int NW_PDUDescriptor::findField(void *object, const char *fieldName) const
@@ -221,6 +237,7 @@ int NW_PDUDescriptor::findField(void *object, const char *fieldName) const
     if (fieldName[0]=='t' && strcmp(fieldName, "time")==0) return base+0;
     if (fieldName[0]=='s' && strcmp(fieldName, "srcAdd")==0) return base+1;
     if (fieldName[0]=='d' && strcmp(fieldName, "destAdd")==0) return base+2;
+    if (fieldName[0]=='t' && strcmp(fieldName, "type")==0) return base+3;
     return basedesc ? basedesc->findField(object, fieldName) : -1;
 }
 
@@ -236,8 +253,9 @@ const char *NW_PDUDescriptor::getFieldTypeString(void *object, int field) const
         "simtime_t",
         "int",
         "int",
+        "int",
     };
-    return (field>=0 && field<3) ? fieldTypeStrings[field] : NULL;
+    return (field>=0 && field<4) ? fieldTypeStrings[field] : NULL;
 }
 
 const char *NW_PDUDescriptor::getFieldProperty(void *object, int field, const char *propertyname) const
@@ -280,6 +298,7 @@ std::string NW_PDUDescriptor::getFieldAsString(void *object, int field, int i) c
         case 0: return double2string(pp->getTime());
         case 1: return long2string(pp->getSrcAdd());
         case 2: return long2string(pp->getDestAdd());
+        case 3: return long2string(pp->getType());
         default: return "";
     }
 }
@@ -297,6 +316,7 @@ bool NW_PDUDescriptor::setFieldAsString(void *object, int field, int i, const ch
         case 0: pp->setTime(string2double(value)); return true;
         case 1: pp->setSrcAdd(string2long(value)); return true;
         case 2: pp->setDestAdd(string2long(value)); return true;
+        case 3: pp->setType(string2long(value)); return true;
         default: return false;
     }
 }

@@ -20,4 +20,5 @@ packet NW_PDU {
     simtime_t time;
     int srcAdd;
     int destAdd;
+    int type;
 }

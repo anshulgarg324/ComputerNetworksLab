@@ -23,7 +23,7 @@ Define_Module(Dllayer);
 
 void Dllayer::initialize()
 {
-    timeout = 5.0;
+    timeout = 5000.0;
     start=par("start");
     end=par("end");
     start=0;
@@ -51,15 +51,19 @@ void Dllayer::handleMessage(cMessage *msg)
     // TODO - Generated method body
      if(msg==delaysen)
     {
-//        copysen=buffer[start]->dup();
-//        send(buffer[start],gate("toPout"));
-         copysen=buffer.front()->dup();
-         send(buffer.front(),gate("toPout"));
-        numSent++;
-        if (ev.isGUI())
-                    updateDisplay();
-      scheduleAt(simTime()+timeout, timeoutEvent);
-      start++;
+         if(!buffer.empty())
+         {
+             //        copysen=buffer[start]->dup();
+             //        send(buffer[start],gate("toPout"));
+                      copysen=buffer.front()->dup();
+                      send(buffer.front()->dup(),gate("toPout"));
+                     numSent++;
+                     if (ev.isGUI())
+                                 updateDisplay();
+                   scheduleAt(simTime()+timeout, timeoutEvent);
+                   start++;
+         }
+
     }else if(msg==delayrec)
     {
         char msgname[20];
@@ -76,9 +80,9 @@ void Dllayer::handleMessage(cMessage *msg)
     }
     else if(msg==timeoutEvent)
     {
-        EV << "Timeout!! " << endl;
+        EV << "Timeout!! = " << did << endl;
         //send(buffer[start-1]->dup(),gate("toPout"));
-        send(copysen,gate("toPout"));
+        send(copysen->dup(),gate("toPout"));
         scheduleAt(simTime()+timeout, timeoutEvent);
         numSent++;
         if (ev.isGUI())
@@ -122,6 +126,7 @@ void Dllayer::handleMessage(cMessage *msg)
            DL_PDU *dpdu=check_and_cast<DL_PDU*> (msg);
            if(dpdu->getType()=='A')
            {
+               cancelEvent(timeoutEvent);
                if(copydpdu!=NULL && dpdu->getId()==copydpdu->getId())
                {
                    delete(dpdu->decapsulate());
@@ -129,10 +134,10 @@ void Dllayer::handleMessage(cMessage *msg)
                else
                {
                    copydpdu=dpdu->dup();
-                   cancelEvent(timeoutEvent);
+
                  delete(dpdu->decapsulate());
                  buffer.pop();
-                  if(start<counter)
+                  if(!buffer.empty())
                   {
                       if(uniform(0,1)<0.30)
                           scheduleAt(simTime()+2.0,delaysen);

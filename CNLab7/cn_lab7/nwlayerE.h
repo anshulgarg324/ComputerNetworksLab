@@ -33,6 +33,7 @@ class NwlayerE : public cSimpleModule
     int numRec;
     map<int,pair<int,int>> table;
     map<int,cGate*> todlgate;
+    map<cGate*,int> gatetoId;
     cLongHistogram delayStats;
     cOutVector delayVector;
 

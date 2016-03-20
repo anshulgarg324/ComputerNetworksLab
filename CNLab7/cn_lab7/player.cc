@@ -45,7 +45,7 @@ void Player::handleMessage(cMessage *msg)
                    updateDisplay();
    }else if(msg->getArrivalGate()==gate("fromnodein"))
    {
-       if (uniform(0,1) < frameLoss)
+       if (uniform(0,1) < 0)
       {
           EV << "\"Losing\" message.\n";
           bubble("message lost");  // making animation more informative...

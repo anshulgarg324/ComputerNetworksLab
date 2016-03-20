@@ -166,22 +166,27 @@ $O/dllayer.o: dllayer.cc \
 $O/nwlayerA.o: nwlayerA.cc \
 	A_PDU_m.h \
 	NW_PDU_m.h \
+	R_PDU_m.h \
 	nwlayerA.h
 $O/nwlayerB.o: nwlayerB.cc \
 	A_PDU_m.h \
 	NW_PDU_m.h \
+	R_PDU_m.h \
 	nwlayerB.h
 $O/nwlayerC.o: nwlayerC.cc \
 	A_PDU_m.h \
 	NW_PDU_m.h \
+	R_PDU_m.h \
 	nwlayerC.h
 $O/nwlayerD.o: nwlayerD.cc \
 	A_PDU_m.h \
 	NW_PDU_m.h \
+	R_PDU_m.h \
 	nwlayerD.h
 $O/nwlayerE.o: nwlayerE.cc \
 	A_PDU_m.h \
 	NW_PDU_m.h \
+	R_PDU_m.h \
 	nwlayerE.h
 $O/player.o: player.cc \
 	DL_PDU_m.h \

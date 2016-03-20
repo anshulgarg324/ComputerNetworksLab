@@ -26,6 +26,7 @@
  *     simtime_t time;
  *     int srcAdd;
  *     int destAdd;
+ *     int type;
  * }
  * </pre>
  */
@@ -35,6 +36,7 @@ class NW_PDU : public ::cPacket
     simtime_t time_var;
     int srcAdd_var;
     int destAdd_var;
+    int type_var;
 
   private:
     void copy(const NW_PDU& other);
@@ -59,6 +61,8 @@ class NW_PDU : public ::cPacket
     virtual void setSrcAdd(int srcAdd);
     virtual int getDestAdd() const;
     virtual void setDestAdd(int destAdd);
+    virtual int getType() const;
+    virtual void setType(int type);
 };
 
 inline void doPacking(cCommBuffer *b, NW_PDU& obj) {obj.parsimPack(b);}
