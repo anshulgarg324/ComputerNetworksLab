@@ -36,9 +36,6 @@ void NwlayerE::initialize()
     todlgate[3]=gate("todlC");
     gatetoId[gate("fromdlB")]=2;
     gatetoId[gate("fromdlC")]=3;
-    delayStats.setName("Delay of Packets");
-    delayStats.setRangeAutoUpper(0,10,2.0);
-    delayVector.setName("Delay Vector");
 }
 
 void NwlayerE::handleMessage(cMessage *msg)

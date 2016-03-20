@@ -1,6 +1,8 @@
 # Partial OMNeT++/Tkenv config file -- see $HOME/.tkenvrc as well
 config default-configname	{}
 config default-runnumber	{}
+inspector LayerNetwork.nodeB NodeB 3 2 411x298+55+122:normal
+inspector LayerNetwork.nodeC NodeC 4 2 411x298+795+14:normal
 inspector LayerNetwork.n1 Node 2 2 411x272+76+278:normal
 inspector LayerNetwork.n2 Node 3 2 411x272+773+273:normal
 

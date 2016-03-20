@@ -243,3 +243,21 @@ Tcl error: moduleinspector.cc#631: ptr0x3fc6ce0 not found
 "ModuleInspector:drawNextEventMarker .inspector0.c ptr0x3fc6ce0 2"
 
 
+----------------------------------------------------------------------
+
+
+Tcl error: tkenv.cc#895: can't unset "pil_name(LayerNetwork.nodeB:NodeB:3:2)": no such element in array
+    while executing
+"unset pil_name($key)"
+    invoked from within
+"if [info exists pil_name($key)] {
+            debug "trying to open inspector $key"
+            set ptrs [opp_findobjectbyfullpath $pil_name($key) $pi..."
+    (procedure "inspectorList:openInspectors" line 5)
+    invoked from within
+"inspectorList:openInspectors"
+    (procedure "inspectorUpdateCallback" line 6)
+    invoked from within
+"inspectorUpdateCallback"
+
+

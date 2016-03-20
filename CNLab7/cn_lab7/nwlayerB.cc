@@ -76,11 +76,6 @@ void NwlayerB::handleMessage(cMessage *msg)
                 }
             }
         }
-       // EV << "Id=" << nid << endl;
-        for(map<int,pair<int,int>>::iterator it = table.begin();it!=table.end();it++)
-        {
-            EV << it->first << " => " << (it->second).first << " => " << (it->second).second << endl;
-        }
         delete(rpdu);
         if(flag)
         {

@@ -72,8 +72,12 @@ void NwlayerD::handleMessage(cMessage *msg)
                 }
             }
         }
+       /* for(map<int,pair<int,int>>::iterator it = table.begin();it!=table.end();it++)
+            {
+                EV << it->first << " => " << (it->second).first << " => " << (it->second).second << endl;
+            }*/
         delete(rpdu);
-        if(flag)
+        /*if(flag)
         {
             R_PDU *rpdu = new R_PDU();
             rpdu->setM(table);
@@ -84,7 +88,7 @@ void NwlayerD::handleMessage(cMessage *msg)
             {
                 send(npdu->dup(),it->second);
             }
-        }
+        }*/
     }
 
 

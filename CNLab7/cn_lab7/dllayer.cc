@@ -23,7 +23,7 @@ Define_Module(Dllayer);
 
 void Dllayer::initialize()
 {
-    timeout = 5000.0;
+    timeout = 5.0;
     start=par("start");
     end=par("end");
     start=0;

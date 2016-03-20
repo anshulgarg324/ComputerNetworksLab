@@ -37,10 +37,7 @@ void NwlayerC::initialize()
     gatetoId[gate("fromdlA")]=1;
     gatetoId[gate("fromdlB")]=2;
     gatetoId[gate("fromdlE")]=5;
-    delayStats.setName("Delay of Packets");
-    delayStats.setRangeAutoUpper(0,10,2.0);
-    delayVector.setName("Delay Vector");
-    if(nid==3)
+    if(nid==0)
     {
         msg = new cMessage("event");
         scheduleAt(0,msg);
